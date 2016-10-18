@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.univ-amu.fr/XML/commun" xmlns:com="http://www.univ-amu.fr/XML/commun">
+    <xs:element name="civilité">
+    	<xs:simpleType>
+    		<xs:restriction base="xs:string">
+    			<xs:enumeration value="M."/>
+    			<xs:enumeration value="Mme"/>
+    			<xs:enumeration value="Mlle"/>
+    		</xs:restriction>
+    	</xs:simpleType>
+    </xs:element>
+    <xs:element name="prénom_usuel" type="com:prénom"/>
+    <xs:element name="prénom_compl" type="com:prénom"/>
+    <xs:simpleType name="prénom">
+    	<xs:restriction base="xs:string">
+    		<xs:maxLength value="50"/>
+ 		</xs:restriction>
+    </xs:simpleType>
+    <xs:element name="nom" type="com:nomType"/>    	   
+    <xs:simpleType name="nomType">
+    		<xs:restriction base="xs:string">
+    			<xs:maxLength value="100"/>
+    		</xs:restriction>
+    </xs:simpleType>
+    <xs:element name="numéro_voie" type="xs:positiveInteger"/> 
+    <xs:element name="type_voie">
+    	<xs:simpleType>
+    		<xs:restriction base="xs:string">
+    			<xs:enumeration value="avenue"/>
+    			<xs:enumeration value="boulevard"/>
+    			<xs:enumeration value="rue"/>
+    			<xs:enumeration value="chemin"/>
+    		</xs:restriction>
+    	</xs:simpleType>
+    </xs:element>   	    
+    <xs:element name="nom_voie" type="com:nomType"/>
+    <xs:element name="indic_compl" type="com:nomType"/>
+    <xs:element name="code_postal">
+    	<xs:simpleType>
+    		<xs:restriction base="xs:positiveInteger">
+    			<xs:pattern value="\d{5}"/>
+    		</xs:restriction>
+	    </xs:simpleType>
+    </xs:element>
+    <xs:element name="bureau_dist" type="com:prénom"/>
+    <xs:element name="ville" type="com:prénom"/>
+    <xs:element name="pays" type="com:prénom"/>
+    <xs:element name="num_tel" type="com:tel"/>   
+    <xs:element name="num_fax" type="com:tel"/>
+    <xs:simpleType name="tel">
+    	<xs:restriction base="xs:string">
+    		<xs:pattern value="(\d{2}\.){4}\d{2}"></xs:pattern>
+    	</xs:restriction>
+    </xs:simpleType>
+    <xs:element name="adresse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element ref="com:numéro_voie" minOccurs="0" maxOccurs="1"/>
+    			<xs:element ref="com:nom_voie"/>    			
+    			<xs:element ref="com:type_voie"/>
+    			<xs:element ref="com:indic_compl" minOccurs="0" maxOccurs="1"/>
+    			<xs:element ref="com:code_postal"/>
+    			<xs:element ref="com:bureau_dist" minOccurs="0" maxOccurs="1"/>
+    			<xs:element ref="com:ville"/>
+    			<xs:element ref="com:pays"/>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>    
+    <xs:element name="mail">
+    	<xs:simpleType>
+    		<xs:restriction base="xs:string">
+    			<xs:pattern value="([A-Z]|[a-z]|\d|\.|_|-)+@([A-Z]|[a-z]|\d|\.|_|-)+\.([A-Z]|[a-z]|\d|\.|_|-)+"/>
+    		</xs:restriction>
+    	</xs:simpleType>
+    </xs:element>
+    <xs:element name="personneGroup" type="com:personneType"/>
+    <xs:complexType name="personneType">
+    	<xs:sequence>
+    		<xs:element ref="com:civilité"/>
+    		<xs:element ref="com:prénom_usuel"/>
+    		<xs:element ref="com:prénom_compl" minOccurs="0" maxOccurs="unbounded"/>
+    		<xs:element ref="com:nom"/>
+    	</xs:sequence>
+    </xs:complexType>    
+</xs:schema>

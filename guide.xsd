@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:gui="http://www.univ-amu.fr/XML/guide/"
+	targetNamespace="http://www.univ-amu.fr/XML/guide/" xmlns:com="http://www.univ-amu.fr/XML/commun">
+	<xs:import schemaLocation="commun.xsd" namespace="http://www.univ-amu.fr/XML/commun"></xs:import>
+	<xs:element name="titre" type="xs:string"/>
+    <xs:element name="éditeur" type="xs:string"/>
+    <xs:element name="auteur" type="com:personneType"/>
+    <xs:element name="année">
+    	<xs:simpleType>
+    		<xs:restriction base="xs:positiveInteger">
+    			<xs:pattern value="\d{4}"/>
+    		</xs:restriction>
+    	</xs:simpleType>
+    </xs:element>
+    <xs:element name="vallon">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element ref="gui:nom_vallon"/>
+    			<xs:element ref="gui:intro"/>
+    			<xs:element ref="gui:itinéraire" maxOccurs="unbounded"/>    			
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    <xs:element name="nom_vallon" type="xs:string"/>
+    <xs:element name="intro">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element ref="gui:paragraphe" minOccurs="1" maxOccurs="unbounded"/>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    <xs:element name="paragraphe">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="text" type="xs:string" minOccurs="0"/>
+    			<xs:element ref="gui:note" minOccurs="0"/>
+    			<xs:element ref="gui:renvoi" minOccurs="0"/>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    <xs:element name="note">    		
+    	<xs:complexType>
+    		<xs:attribute name="id" type="xs:ID" use="required"/>    			    		
+    		<xs:attribute name="type" type="gui:attr_note"/>
+    	</xs:complexType>
+    </xs:element>
+    <xs:simpleType name="attr_note">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="prudence"/>
+    		<xs:enumeration value="matériel"/>
+    	</xs:restriction>
+    </xs:simpleType>
+    <xs:element name="renvoi">
+    	<xs:complexType>
+    		<xs:attribute name="ref" use="required" type="xs:IDREF"/>
+    	</xs:complexType>
+    </xs:element>
+    <xs:element name="itinéraire"></xs:element>
+    <xs:element name="altitude">
+    	<xs:simpleType>
+    		<xs:restriction base="xs:positiveInteger">
+    			<xs:maxExclusive value="9000"/>
+    		</xs:restriction>
+    	</xs:simpleType>
+    </xs:element>
+    <xs:element name="cotation">
+    	<xs:simpleType>
+    		<xs:restriction base="xs:string">
+    			<xs:pattern value="\*{1,5}"/>
+    		</xs:restriction>
+    	</xs:simpleType>
+    </xs:element>
+    <xs:element name="numéro" type="xs:positiveInteger"/>
+</xs:schema>
