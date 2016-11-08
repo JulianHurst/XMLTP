@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (x64) (http://www.altova.com) by Philippe Ramadour (UPCAM - FEA) -->
+<xs:schema xmlns="http://www.univ-amu.fr/XML/guide" xmlns:gui="http://www.univ-amu.fr/XML/guide" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="http://www.univ-amu.fr/XML/commun" targetNamespace="http://www.univ-amu.fr/XML/guide" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.univ-amu.fr/XML/commun" schemaLocation="commun.xsd"/>
+	<xs:element name="guide">
+		<xs:annotation>
+			<xs:documentation>Guide d'itinéraires à ski</xs:documentation>
+		</xs:annotation>
+		<xs:complexType mixed="false">
+			<xs:sequence>
+				<xs:element name="titre" type="xs:string"/>
+				<xs:element name="auteur" type="com:personneType" maxOccurs="unbounded"/>
+				<xs:element name="éditeur" type="xs:string"/>
+				<xs:element name="année" type="xs:gYear"/>
+				<xs:element name="vallon" maxOccurs="unbounded">
+					<xs:complexType mixed="false">
+						<xs:sequence>
+							<xs:element name="nom" type="xs:string"/>
+							<xs:element name="introduction">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element ref="gui:paragraphe" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+								<xs:unique name="noteDansIntroductionVallonUnique">
+									<xs:selector xpath=".//gui:note"/>
+									<xs:field xpath="./@type"/>
+									<xs:field xpath="."/>
+								</xs:unique>
+							</xs:element>
+							<xs:element name="itinéraire" maxOccurs="unbounded">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="nom" type="xs:string"/>
+										<xs:element name="altitude">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:maxExclusive value="9000"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="cotation">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="\*{1,5}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element ref="gui:paragraphe" maxOccurs="unbounded"/>
+									</xs:sequence>
+									<xs:attribute name="numéro" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern value="I\d{6}"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+								<xs:unique name="noteDansItineraireUnique">
+									<xs:selector xpath=".//gui:note"/>
+									<xs:field xpath="./@type"/>
+									<xs:field xpath="."/>
+								</xs:unique>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="vallonUnique">
+			<xs:selector xpath=".//gui:vallon"/>
+			<xs:field xpath="./gui:nom"/>
+		</xs:unique>
+		<xs:unique name="itinéraireNuméroUnique">
+			<xs:selector xpath=".//gui:itinéraire"/>
+			<xs:field xpath="./@numéro"/>
+		</xs:unique>
+		<xs:unique name="itinéraireNomUnique">
+			<xs:selector xpath=".//gui:itinéraire"/>
+			<xs:field xpath="./gui:nom"/>
+		</xs:unique>
+		<xs:unique name="noteDansGuideUnique">
+			<xs:selector xpath=".//gui:note"/>
+			<xs:field xpath="./@ident"/>
+		</xs:unique>
+		<xs:key name="itinéraireEtNoteKey">
+			<xs:selector xpath=".//gui:itinéraire|.//gui:note"/>
+			<xs:field xpath="./@numéro|./@ident"/>
+		</xs:key>
+		<xs:keyref name="renvoiKeyref" refer="gui:itinéraireEtNoteKey">
+			<xs:annotation>
+				<xs:documentation>Pour la contrainte portant sur les renvois, il faut que les types des numéros des itinéraires, des identifiants des notes et des cibles des renvois soient compatibles. Pour ce faire, on peut soit ne pas toucher au type demandé pour le numéro d'un itinéraire et baser les 2 autres données sur des types numériques entiers positifs. On peut aussi choisir une autre solution : ici, l'identifiant d'un itinéraire est une chaîne basée sur un motif commançant par un 'I' suivi de 6 chiffres, l'identifiant d'une note est une chaîne basée sur un motif commençant par un 'N' suivi de 6 chiffres et, enfin, la cible d'un renvoi est une chaîne basée sur l'un ou l'autre de ces 2 motifs.</xs:documentation>
+			</xs:annotation>
+			<xs:selector xpath=".//gui:renvoi"/>
+			<xs:field xpath="./@cible"/>
+		</xs:keyref>
+	</xs:element>
+	<xs:element name="paragraphe">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="renvoi">
+					<xs:complexType mixed="false">
+						<xs:attribute name="cible" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="I\d{6}"/>
+									<xs:pattern value="N\d{6}"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="note">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="ident">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:pattern value="N\d{6}"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="type">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="prudence"/>
+											<xs:enumeration value="matériel"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

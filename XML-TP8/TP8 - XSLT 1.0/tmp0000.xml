@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/Users/h12026079/Desktop/XML/TP8%20-%20XSLT%201.0/guide.xslt"?>
+<guide xmlns="http://www.univ-amu.fr/XML/guide" xmlns:com="http://www.univ-amu.fr/XML/commun" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.univ-amu.fr/XML/guide ./guide.xsd">
+	<titre>Guide d'itinéraires à ski</titre>
+	<auteur>
+		<com:civilité>M.</com:civilité>
+		<com:prénomUsuel>Premier</com:prénomUsuel>
+		<com:nom>Auteur</com:nom>
+	</auteur>
+	<auteur>
+		<com:civilité>M.</com:civilité>
+		<com:prénomUsuel>Second</com:prénomUsuel>
+		<com:nom>Auteur</com:nom>
+	</auteur>
+	<éditeur>Editeur</éditeur>
+	<année>2000</année>
+	<vallon>
+		<nom>Vallon1</nom>
+		<introduction>
+			<paragraphe>
+				Premier paragraphe de l'introduction du premier vallon
+				<renvoi cible="I000001"/>
+				<note type="prudence" ident="N000001">Une note de type prudence</note>
+			</paragraphe>
+			<paragraphe>
+				Second paragraphe de l'introduction du premier vallon
+				<renvoi cible="N000001"/>
+				<note type="prudence" ident="N000002">Une autre note de type prudence</note>
+			</paragraphe>
+		</introduction>
+		<itinéraire numéro="I000001">
+			<nom>Itineraire1</nom>
+			<altitude>7500</altitude>
+			<cotation>**</cotation>
+			<paragraphe>
+				Premier paragraphe du premier itinéraire du premier vallon
+				<renvoi cible="N000002"/>
+				<note type="matériel" ident="N000003">Une note de type matériel</note>
+			</paragraphe>
+			<paragraphe>
+				Second paragraphe du premier itinéraire du premier vallon
+				<note type="prudence" ident="N000004">Une note de type prudence</note>
+				<note type="matériel" ident="N000005">Une autre note de type matériel</note>
+			</paragraphe>
+		</itinéraire>
+		<itinéraire numéro="I000002">
+			<nom>Itineraire2</nom>
+			<altitude>8123</altitude>
+			<cotation>***</cotation>
+			<paragraphe>
+				Premier paragraphe du second itinéraire du premier vallon
+				<renvoi cible="N000005"/>
+				<note type="prudence" ident="N000006">Une note de type prudence</note>
+			</paragraphe>
+			<paragraphe>
+				Second paragraphe du second itinéraire du second vallon
+			</paragraphe>
+		</itinéraire>
+	</vallon>
+	<vallon>
+		<nom>Vallon2</nom>
+		<introduction>
+			<paragraphe>
+				Premier paragraphe de l'introduction du second vallon
+				<renvoi cible="I000002"/>
+			</paragraphe>
+			<paragraphe>
+				Second paragraphe de l'introduction du second vallon
+				<renvoi cible="I000002"/>
+				<note type="matériel" ident="N000007">Une note de type matériel</note>
+			</paragraphe>
+		</introduction>
+		<itinéraire numéro="I000003">
+			<nom>Itineraire3</nom>
+			<altitude>6389</altitude>
+			<cotation>*</cotation>
+			<paragraphe>
+				Premier paragraphe du premier itinéraire du second vallon
+				<renvoi cible="I000001"/>
+				<note type="prudence" ident="N000008">Une note de type prudence</note>
+			</paragraphe>
+			<paragraphe>
+				Second paragraphe du premier itinéraire du second vallon
+			</paragraphe>
+		</itinéraire>
+		<itinéraire numéro="I000005">
+			<nom>Itineraire4</nom>
+			<altitude>6388</altitude>
+			<cotation>****</cotation>
+			<paragraphe>
+				Premier paragraphe du second itinéraire du second vallon
+				<renvoi cible="I000002"/>
+				<note type="prudence" ident="N000009">Une note de type prudence</note>
+			</paragraphe>
+			<paragraphe>
+				Second paragraphe du second itinéraire du second vallon
+				<renvoi cible="N000003"/>
+				<note type="matériel" ident="N000000">Une note de type matériel</note>
+			</paragraphe>
+		</itinéraire>
+	</vallon>
+</guide>

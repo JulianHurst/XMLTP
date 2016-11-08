@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.univ-amu.fr/XML/livre" xmlns:liv="http://www.univ-amu.fr/XML/livre" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="http://www.univ-amu.fr/XML/commun" targetNamespace="http://www.univ-amu.fr/XML/livre" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.univ-amu.fr/XML/commun" schemaLocation="commun.xsd"/>
+	<xs:element name="livre">
+		<xs:annotation>
+			<xs:documentation>Livre à contenu pédagogique</xs:documentation>
+		</xs:annotation>
+		<xs:complexType mixed="false">
+			<xs:sequence>
+				<xs:element name="titre" type="xs:string"/>
+				<xs:element name="auteur" type="com:personneType" maxOccurs="unbounded"/>
+				<xs:element name="éditeur" type="xs:string"/>
+				<xs:element name="année" type="xs:gYear"/>
+				<xs:element name="leçon" maxOccurs="unbounded">
+					<xs:complexType mixed="false">
+						<xs:sequence>
+							<xs:element name="titre" type="xs:string"/>
+							<xs:element ref="liv:introduction"/>
+							<xs:element name="chapitre" maxOccurs="unbounded">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="titre" type="xs:string"/>
+										<xs:element ref="liv:introduction"/>
+										<xs:element name="section" maxOccurs="unbounded">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="titre" type="xs:string"/>
+													<xs:element ref="liv:paragraphe" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+								<xs:unique name="titreSectionUnique">
+									<xs:selector xpath="./liv:section"/>
+									<xs:field xpath="./liv:titre"/>
+								</xs:unique>
+							</xs:element>
+							<xs:element name="exercices">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="exercice" maxOccurs="unbounded">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="QCM">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="énoncé" type="xs:string"/>
+																<xs:element name="proposition" minOccurs="2" maxOccurs="unbounded">
+																	<xs:complexType mixed="false">
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute name="numéro" type="xs:positiveInteger" use="required"/>
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="corrigé">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="bonneProposition" maxOccurs="unbounded">
+																	<xs:complexType mixed="false">
+																		<xs:attribute name="numéro" type="xs:positiveInteger" use="required"/>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="numéro" type="xs:positiveInteger" use="required"/>
+											</xs:complexType>
+											<xs:key name="numéroPropositionKey">
+												<xs:selector xpath=".//liv:proposition"/>
+												<xs:field xpath="./@numéro"/>
+											</xs:key>
+											<xs:unique name="numéroBonnePropositionUnique">
+												<xs:selector xpath=".//liv:bonneProposition"/>
+												<xs:field xpath="./@numéro"/>
+											</xs:unique>
+											<xs:keyref name="numéroBonnePropositionKeyref" refer="numéroPropositionKey">
+												<xs:selector xpath=".//liv:bonneProposition"/>
+												<xs:field xpath="./@numéro"/>
+											</xs:keyref>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="numéro" type="xs:positiveInteger" use="required"/>
+					</xs:complexType>
+					<xs:unique name="titreChapitreUnique">
+						<xs:selector xpath="./liv:chapitre"/>
+						<xs:field xpath="./liv:titre"/>
+					</xs:unique>
+					<xs:unique name="numéroExerciceUnique">
+						<xs:selector xpath=".//liv:exercice"/>
+						<xs:field xpath="./@numéro"/>
+					</xs:unique>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="ISBN" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:positiveInteger">
+						<xs:totalDigits value="13"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+		<xs:unique name="numéroLeçonUnique">
+			<xs:selector xpath=".//liv:leçon"/>
+			<xs:field xpath="./@numéro"/>
+		</xs:unique>
+		<xs:unique name="titreLeçonUnique">
+			<xs:selector xpath=".//liv:leçon"/>
+			<xs:field xpath="./liv:titre"/>
+		</xs:unique>
+		<xs:unique name="auteurUnique">
+			<xs:selector xpath=".//liv:auteur"/>
+			<xs:field xpath="./com:nom"/>
+			<xs:field xpath="./com:prénomUsuel"/>
+		</xs:unique>
+		<xs:key name="leçonKey">
+			<xs:selector xpath=".//liv:leçon"/>
+			<xs:field xpath="./@numéro"/>
+			<xs:field xpath="./liv:titre"/>
+		</xs:key>
+		<xs:keyref name="renvoiKeyref" refer="leçonKey">
+			<xs:selector xpath=".//liv:renvoi"/>
+			<xs:field xpath="./@numéro"/>
+			<xs:field xpath="./@titre"/>
+		</xs:keyref>
+	</xs:element>
+	<xs:element name="paragraphe">
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element name="renvoi" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="titre" type="xs:string" use="required"/>
+						<xs:attribute name="numéro" type="xs:positiveInteger" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="introduction">
+		<xs:complexType mixed="false">
+			<xs:sequence>
+				<xs:element ref="liv:paragraphe" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

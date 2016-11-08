@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dico:dictionnaire xsi:schemaLocation="http://www.univ-amu.fr/XML/dictionnaire dictionnaire-new.xsd" xmlns:dico="http://www.univ-amu.fr/XML/dictionnaire" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dico:entrée>
+		<dico:orthographe>
+			<dico:usuelle>StringO1.1</dico:usuelle>
+			<dico:dérivée>StringO1.2</dico:dérivée>
+		</dico:orthographe>
+		<dico:type>
+			<dico:nomCommun>
+				<dico:genre valeur="masculin"></dico:genre>
+				<dico:nombre valeur="singulier"></dico:nombre>
+			</dico:nomCommun>
+		</dico:type>
+		<dico:prononciation>StringP1.1</dico:prononciation>
+		<dico:significationEntrée>
+			<dico:domaine>langage courant</dico:domaine>
+			<dico:sens>
+				<dico:renvoi>StringO1.1</dico:renvoi>
+			</dico:sens>
+		</dico:significationEntrée>
+		<dico:significationEntrée>
+			<dico:domaine>langage familier</dico:domaine>
+			<dico:sens>bla bla</dico:sens>
+			<dico:exemple>StringE1.1</dico:exemple>
+			<dico:traduction>
+				<dico:langue>italien</dico:langue>
+				<dico:écriture>StringT1.1</dico:écriture>
+				<dico:prononciation>StringP1.1</dico:prononciation>
+			</dico:traduction>
+		</dico:significationEntrée>
+		<dico:étymologie>StringE1.1</dico:étymologie>
+	</dico:entrée>
+	<dico:entrée>
+		<dico:orthographe>
+			<dico:usuelle>StringO2.1</dico:usuelle>
+			<dico:dérivée>StringO2.2</dico:dérivée>
+		</dico:orthographe>
+		<dico:type>
+			<dico:verbe>
+				<dico:groupe>1er</dico:groupe>
+				<dico:forme>transitif</dico:forme>
+			</dico:verbe>
+		</dico:type>
+		<dico:prononciation>StringP2.1</dico:prononciation>
+		<dico:significationEntrée>
+			<dico:domaine>informatique</dico:domaine>
+			<dico:sens>StringS2.1</dico:sens>
+			<dico:exemple>StringE2.1</dico:exemple>
+		</dico:significationEntrée>
+		<dico:significationExpression>
+			<dico:domaine>informatique</dico:domaine>
+			<dico:sens>StringS2.1</dico:sens>
+			<dico:traduction>
+				<dico:langue>italien</dico:langue>
+				<dico:écriture>StringE2.1</dico:écriture>
+				<dico:prononciation>StringP2.1</dico:prononciation>
+			</dico:traduction>
+			<dico:expression>StringE2.1</dico:expression>
+		</dico:significationExpression>
+		<dico:étymologie>StringE2.1</dico:étymologie>
+	</dico:entrée>
+	<dico:entrée>
+		<dico:orthographe>
+			<dico:usuelle>StringO3.1</dico:usuelle>
+			<dico:dérivée>StringO3.2</dico:dérivée>
+		</dico:orthographe>
+		<dico:type>
+			<dico:adjectif>
+				<dico:genre valeur="féminin"></dico:genre>
+				<dico:nombre valeur="singulier"><dico:annotation>Toujours au pluriel</dico:annotation><dico:annotation>Vraiment toujours au pluriel :-)</dico:annotation></dico:nombre>
+			</dico:adjectif>
+		</dico:type>
+		<dico:prononciation>StringP3.1</dico:prononciation>
+		<dico:renvoi>StringO2.1</dico:renvoi>
+	</dico:entrée>
+</dico:dictionnaire>

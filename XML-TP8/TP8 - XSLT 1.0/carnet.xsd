@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.univ-amu.fr/XML/carnet" xmlns:cnt="http://www.univ-amu.fr/XML/carnet" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="http://www.univ-amu.fr/XML/commun" targetNamespace="http://www.univ-amu.fr/XML/carnet" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.univ-amu.fr/XML/commun" schemaLocation="commun.xsd"/>
+	<xs:element name="carnet">
+		<xs:annotation>
+			<xs:documentation>Carnet d'adresse professionnel</xs:documentation>
+		</xs:annotation>
+		<xs:complexType mixed="false">
+			<xs:sequence>
+				<xs:element name="contacts">
+					<xs:complexType mixed="false">
+						<xs:sequence>
+							<xs:element name="contact" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:group ref="com:personneGroup"/>
+										<xs:element ref="com:téléphone" maxOccurs="unbounded"/>
+										<xs:element ref="com:mél" maxOccurs="unbounded"/>
+										<xs:element name="bureauPrincipal">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="entreprise" type="com:chaine50Type"/>
+													<xs:element name="emplacement" type="com:chaine50Type">
+														<xs:annotation>
+															<xs:documentation>On ne peut pas ici avec XPath 1.0 spécifier de contrainte d'intégrité permettant de vérifier que le site principal d'une personne existe bien dans la liste des sites occupés par l'entreprise. dans laquelle travaille cette personne On pourrait 'juste', éventuellement, vérifier que le site sur lequel travaille une personne existe dans la liste des sites cités dans le carnet d'adresse. La contrainte demandée ici pourrait en fait être vérifiée avec une assertion mais celles-ci ne peuvent être exprimées qu'en XPath 2.0 et n'ont pas encore été vues.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="entreprises">
+					<xs:complexType mixed="false">
+						<xs:sequence>
+							<xs:element name="entreprise" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="nom" type="com:chaine50Type"/>
+										<xs:element name="site" maxOccurs="unbounded">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="nom" type="com:chaine50Type"/>
+													<xs:element ref="com:adresse"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+								<xs:unique name="siteUnique">
+									<xs:selector xpath=".//cnt:site"/>
+									<xs:field xpath="./cnt:nom"/>
+								</xs:unique>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="contactUnique">
+			<xs:selector xpath=".//cnt:contact"/>
+			<xs:field xpath="./com:nom"/>
+			<xs:field xpath="./com:prénomUsuel"/>
+		</xs:unique>
+		<xs:unique name="entrepriseUnique">
+			<xs:selector xpath=".//cnt:entreprise"/>
+			<xs:field xpath="./cnt:nom"/>
+		</xs:unique>
+	</xs:element>
+</xs:schema>

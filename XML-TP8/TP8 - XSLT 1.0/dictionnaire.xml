@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionnaire xmlns="http://www.univ-amu.fr/XML/dictionnaire" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.univ-amu.fr/XML/dictionnaire ./dictionnaire.xsd">
+	<entrée>
+		<orthographe>
+			<usuelle>StringO1.1</usuelle>
+			<dérivée>StringO1.2</dérivée>
+			<dérivée>StringO1.3</dérivée>
+		</orthographe>
+		<type>nom commun</type>
+		<genre valeur="féminin"/>
+		<nombre valeur="pluriel">
+			<annotation>Toujours pluriel</annotation>
+			<annotation>Vraiment toujours pluriel :-)</annotation>
+		</nombre>
+		<prononciation>StringP1.1</prononciation>
+		<significationEntrée>
+			<domaine>langage courant</domaine>
+			<sens>bla bla bla
+				<renvoi>StringO1.1</renvoi>
+				<renvoi>StringO2.1</renvoi>
+			</sens>
+		</significationEntrée>
+		<significationEntrée>
+			<domaine>langage familier</domaine>
+			<sens>bla bla</sens>
+			<exemple>StringE1.1</exemple>
+			<traduction>
+				<langue>italien</langue>
+				<écriture>StringT1.1</écriture>
+				<prononciation>StringP1.1</prononciation>
+				<annotation>Annotation1</annotation>
+				<annotation>Annotation2</annotation>
+			</traduction>
+			<traduction>
+				<langue>américain</langue>
+				<écriture>StringT1.2</écriture>
+				<prononciation>StringP1.2</prononciation>
+			</traduction>
+		</significationEntrée>
+		<étymologie>StringE1.1</étymologie>
+	</entrée>
+	<entrée>
+		<orthographe>
+			<usuelle>StringO2.1</usuelle>
+			<dérivée>StringO2.2</dérivée>
+		</orthographe>
+		<type>pronom personnel</type>
+		<genre valeur="masculin"/>
+		<nombre valeur="singulier"/>
+		<prononciation>StringP2.1</prononciation>
+		<significationEntrée>
+			<domaine>informatique</domaine>
+			<sens>StringS2.1</sens>
+			<exemple>StringE2.1</exemple>
+			<exemple>StringE2.2</exemple>
+		</significationEntrée>
+		<significationExpression>
+			<domaine>informatique</domaine>
+			<sens>StringS2.1</sens>
+			<traduction>
+				<langue>italien</langue>
+				<écriture>StringE2.1</écriture>
+				<prononciation>StringP2.1</prononciation>
+			</traduction>
+			<expression>StringE2.1</expression>
+		</significationExpression>
+		<étymologie>StringE2.1</étymologie>
+	</entrée>
+	<entrée>
+		<orthographe>
+			<usuelle>StringO3.1</usuelle>
+			<dérivée>StringO3.2</dérivée>
+		</orthographe>
+		<type>nom commun</type>
+		<genre valeur="neutre"/>
+		<nombre valeur="singulier"/>
+		<groupe>2ème</groupe>
+		<forme>réfléchi</forme>
+		<prononciation>StringP1.1</prononciation>
+		<renvoi>StringO2.1</renvoi>
+	</entrée>
+</dictionnaire>

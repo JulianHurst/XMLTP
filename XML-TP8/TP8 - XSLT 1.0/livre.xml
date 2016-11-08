@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<liv:livre ISBN="1234567891234" xsi:schemaLocation="http://www.univ-amu.fr/XML/livre livre.xsd" xmlns:liv="http://www.univ-amu.fr/XML/livre" xmlns:com="http://www.univ-amu.fr/XML/commun" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<liv:titre>String</liv:titre>
+	<liv:auteur>
+		<com:civilité>M.</com:civilité>
+		<com:prénomUsuel>String</com:prénomUsuel>
+		<com:nom>String</com:nom>
+	</liv:auteur>
+	<liv:auteur>
+		<com:civilité>Mlle</com:civilité>
+		<com:prénomUsuel>String</com:prénomUsuel>
+		<com:nom>String2</com:nom>
+	</liv:auteur>
+	<liv:éditeur>String</liv:éditeur>
+	<liv:année>2000</liv:année>
+	<liv:leçon numéro="1">
+		<liv:titre>Leçon 1</liv:titre>
+		<liv:introduction>
+			<liv:paragraphe>
+				blabla <liv:renvoi numéro="2" titre="Leçon 2"/> blabla
+			</liv:paragraphe>
+		</liv:introduction>
+		<liv:chapitre>
+			<liv:titre>Chapitre 1</liv:titre>
+			<liv:introduction>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="2" titre="Leçon 2"/> blabla
+				</liv:paragraphe>
+			</liv:introduction>
+			<liv:section>
+				<liv:titre>Section 1</liv:titre>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="2" titre="Leçon 2"/> blabla
+				</liv:paragraphe>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+			</liv:section>
+			<liv:section>
+				<liv:titre>Section 2</liv:titre>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="2" titre="Leçon 2"/> blabla
+				</liv:paragraphe>
+			</liv:section>
+		</liv:chapitre>
+		<liv:chapitre>
+			<liv:titre>Chapitre 2</liv:titre>
+			<liv:introduction>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="2" titre="Leçon 2"/> blabla
+				</liv:paragraphe>
+			</liv:introduction>
+			<liv:section>
+				<liv:titre>Section 1</liv:titre>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="2" titre="Leçon 2"/> blabla
+				</liv:paragraphe>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="2" titre="Leçon 2"/> blabla
+				</liv:paragraphe>
+			</liv:section>
+			<liv:section>
+				<liv:titre>Section 2</liv:titre>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="2" titre="Leçon 2"/> blabla
+				</liv:paragraphe>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+			</liv:section>
+		</liv:chapitre>
+		<liv:exercices>
+			<liv:exercice numéro="1">
+				<liv:QCM>
+					<liv:énoncé>String</liv:énoncé>
+					<liv:proposition numéro="1">Réponse 1</liv:proposition>
+					<liv:proposition numéro="2">Réponse 2</liv:proposition>
+				</liv:QCM>
+				<liv:corrigé>
+					<liv:bonneProposition numéro="1"/>
+				</liv:corrigé>
+			</liv:exercice>
+			<liv:exercice numéro="2">
+				<liv:QCM>
+					<liv:énoncé>String</liv:énoncé>
+					<liv:proposition numéro="1">Réponse 1</liv:proposition>
+					<liv:proposition numéro="2">Réponse 2</liv:proposition>
+				</liv:QCM>
+				<liv:corrigé>
+					<liv:bonneProposition numéro="1"/>
+					<liv:bonneProposition numéro="2"/>
+				</liv:corrigé>
+			</liv:exercice>
+		</liv:exercices>
+	</liv:leçon>
+	<liv:leçon numéro="2">
+		<liv:titre>Leçon 2</liv:titre>
+		<liv:introduction>
+			<liv:paragraphe>
+				blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+			</liv:paragraphe>
+		</liv:introduction>
+		<liv:chapitre>
+			<liv:titre>Chapitre 1</liv:titre>
+			<liv:introduction>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+			</liv:introduction>
+			<liv:section>
+				<liv:titre>Section 1</liv:titre>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="2" titre="Leçon 2"/> blabla
+				</liv:paragraphe>
+			</liv:section>
+			<liv:section>
+				<liv:titre>Section 2</liv:titre>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+			</liv:section>
+		</liv:chapitre>
+		<liv:chapitre>
+			<liv:titre>Chapitre 2</liv:titre>
+			<liv:introduction>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+			</liv:introduction>
+			<liv:section>
+				<liv:titre>Section 1</liv:titre>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+			</liv:section>
+			<liv:section>
+				<liv:titre>Section 2</liv:titre>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+				<liv:paragraphe>
+					blabla <liv:renvoi numéro="1" titre="Leçon 1"/> blabla
+				</liv:paragraphe>
+			</liv:section>
+		</liv:chapitre>
+		<liv:exercices>
+			<liv:exercice numéro="1">
+				<liv:QCM>
+					<liv:énoncé>String</liv:énoncé>
+					<liv:proposition numéro="1">Réponse 1</liv:proposition>
+					<liv:proposition numéro="2">Réponse 2</liv:proposition>
+					<liv:proposition numéro="3">Réponse 3</liv:proposition>
+				</liv:QCM>
+				<liv:corrigé>
+					<liv:bonneProposition numéro="1"/>
+					<liv:bonneProposition numéro="3"/>
+				</liv:corrigé>
+			</liv:exercice>
+			<liv:exercice numéro="2">
+				<liv:QCM>
+					<liv:énoncé>String</liv:énoncé>
+					<liv:proposition numéro="1">Réponse 1</liv:proposition>
+					<liv:proposition numéro="2">Réponse 2</liv:proposition>
+				</liv:QCM>
+				<liv:corrigé>
+					<liv:bonneProposition numéro="2"/>
+				</liv:corrigé>
+			</liv:exercice>
+		</liv:exercices>
+	</liv:leçon>
+</liv:livre>

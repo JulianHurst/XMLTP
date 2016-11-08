@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rel:relevé unité="EURO" xsi:schemaLocation="http://www.univ-amu.fr/XML/releve releve-choix.xsd" xmlns:rel="http://www.univ-amu.fr/XML/releve" xmlns:com="http://www.univ-amu.fr/XML/commun" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<rel:titulaire>
+		<rel:identité>
+			<com:civilité>M.</com:civilité>
+			<com:prénomUsuel>Prénom du titulaire</com:prénomUsuel>
+			<com:nom>Nom du titulaire</com:nom>
+		</rel:identité>
+		<com:adresse>
+			<com:numéroVoie>2</com:numéroVoie>
+			<com:typeVoie>rue</com:typeVoie>
+			<com:nomVoie>Nom de la rue</com:nomVoie>
+			<com:complément>Complément d'adresse</com:complément>
+			<com:codePostal>13000</com:codePostal>
+			<com:bureauDistributeur>Bureau distributeur</com:bureauDistributeur>
+			<com:ville>Ville</com:ville>
+			<com:pays>Pays</com:pays>
+		</com:adresse>
+		<com:téléphone>00.00.00.00.00</com:téléphone>
+	</rel:titulaire>
+	<rel:complet>
+		<rel:compte>
+			<rel:numéro>00000000000</rel:numéro>
+			<rel:intitulé>String</rel:intitulé>
+			<rel:soldeActuel>3.14</rel:soldeActuel>
+			<rel:dateHeureSoldeActuel>2001-12-17T09:30:47.0Z</rel:dateHeureSoldeActuel>
+			<rel:soldeInitial>3.14</rel:soldeInitial>
+			<rel:dateHeureSoldeInitial>2001-12-17T09:30:47.0Z</rel:dateHeureSoldeInitial>
+			<rel:opérations>
+				<rel:opération type="débit">
+					<rel:dateDemande>2006-09-28</rel:dateDemande>
+					<rel:dateValeur>2006-09-28</rel:dateValeur>
+					<rel:libellé>String</rel:libellé>
+					<rel:montant>3.14</rel:montant>
+				</rel:opération>
+				<rel:opération type="crédit">
+					<rel:dateDemande>2004-09-28</rel:dateDemande>
+					<rel:dateValeur>2004-09-29</rel:dateValeur>
+					<rel:libellé>String</rel:libellé>
+					<rel:montant>3.14</rel:montant>
+				</rel:opération>
+			</rel:opérations>
+			<rel:procurations>
+				<rel:titulaire>
+					<com:civilité>Mme</com:civilité>
+					<com:prénomUsuel>String</com:prénomUsuel>
+					<com:nom>String</com:nom>
+				</rel:titulaire>
+				<rel:titulaire>
+					<com:civilité>M.</com:civilité>
+					<com:prénomUsuel>String</com:prénomUsuel>
+					<com:nom>String2</com:nom>
+				</rel:titulaire>
+				<rel:titulaire>
+					<com:civilité>Mlle</com:civilité>
+					<com:prénomUsuel>String2</com:prénomUsuel>
+					<com:nom>String</com:nom>
+				</rel:titulaire>
+			</rel:procurations>
+		</rel:compte>
+		<rel:compte>
+			<rel:numéro>00000000001</rel:numéro>
+			<rel:intitulé>String</rel:intitulé>
+			<rel:soldeActuel>3.14</rel:soldeActuel>
+			<rel:dateHeureSoldeActuel>2001-12-17T09:30:47.0Z</rel:dateHeureSoldeActuel>
+			<rel:soldeInitial>3.14</rel:soldeInitial>
+			<rel:dateHeureSoldeInitial>2001-12-17T09:30:47.0Z</rel:dateHeureSoldeInitial>
+			<rel:opérations>
+				<rel:opération type="débit">
+					<rel:dateDemande>2006-09-28</rel:dateDemande>
+					<rel:dateValeur>2006-09-28</rel:dateValeur>
+					<rel:libellé>String</rel:libellé>
+					<rel:montant>3.14</rel:montant>
+				</rel:opération>
+				<rel:opération type="crédit">
+					<rel:dateDemande>2004-09-15</rel:dateDemande>
+					<rel:dateValeur>2004-09-16</rel:dateValeur>
+					<rel:libellé>String</rel:libellé>
+					<rel:montant>3.14</rel:montant>
+				</rel:opération>
+			</rel:opérations>
+			<rel:procurations>
+				<rel:titulaire>
+					<com:civilité>M.</com:civilité>
+					<com:prénomUsuel>String</com:prénomUsuel>
+					<com:nom>String</com:nom>
+				</rel:titulaire>
+				<rel:titulaire>
+					<com:civilité>M.</com:civilité>
+					<com:prénomUsuel>String2</com:prénomUsuel>
+					<com:nom>String</com:nom>
+				</rel:titulaire>
+			</rel:procurations>
+			<rel:portefeuille>
+				<rel:actions>
+					<rel:action>
+						<rel:intitulé>String</rel:intitulé>
+						<rel:quantité>2</rel:quantité>
+						<rel:coûtAchatUnitaire>3.14</rel:coûtAchatUnitaire>
+						<rel:coûtAchatGlobal>3.14</rel:coûtAchatGlobal>
+						<rel:dateHeureAchat>2001-12-17T09:30:47.0Z</rel:dateHeureAchat>
+						<rel:montantActuelUnitaire>3.14</rel:montantActuelUnitaire>
+						<rel:montantActuelGlobal>3</rel:montantActuelGlobal>
+						<rel:dateHeureMontantsActuels>2001-12-17T09:30:47.0Z</rel:dateHeureMontantsActuels>
+					</rel:action>
+					<rel:action>
+						<rel:intitulé>String2</rel:intitulé>
+						<rel:quantité>2</rel:quantité>
+						<rel:coûtAchatUnitaire>3.14</rel:coûtAchatUnitaire>
+						<rel:coûtAchatGlobal>3.14</rel:coûtAchatGlobal>
+						<rel:dateHeureAchat>2001-12-17T09:30:47.0Z</rel:dateHeureAchat>
+						<rel:montantActuelUnitaire>3.14</rel:montantActuelUnitaire>
+						<rel:montantActuelGlobal>3.14</rel:montantActuelGlobal>
+						<rel:dateHeureMontantsActuels>2001-12-17T09:30:47.0Z</rel:dateHeureMontantsActuels>
+					</rel:action>
+					<rel:action>
+						<rel:intitulé>String3</rel:intitulé>
+						<rel:quantité>2</rel:quantité>
+						<rel:coûtAchatUnitaire>3.14</rel:coûtAchatUnitaire>
+						<rel:coûtAchatGlobal>3.14</rel:coûtAchatGlobal>
+						<rel:dateHeureAchat>2001-12-17T09:30:47.0Z</rel:dateHeureAchat>
+						<rel:montantActuelUnitaire>3.14</rel:montantActuelUnitaire>
+						<rel:montantActuelGlobal>3.14</rel:montantActuelGlobal>
+						<rel:dateHeureMontantsActuels>2001-12-17T09:30:47.0Z</rel:dateHeureMontantsActuels>
+					</rel:action>
+				</rel:actions>
+				<rel:montant>3.14</rel:montant>
+				<rel:dateHeureMontant>2001-12-17T09:30:47.0Z</rel:dateHeureMontant>
+			</rel:portefeuille>
+		</rel:compte>
+	</rel:complet>
+</rel:relevé>
